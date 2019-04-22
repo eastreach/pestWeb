@@ -54,10 +54,10 @@
               cancelButtonText: '取消',
               type: 'warning'
             }).then(() => {
-              let url = self.ifAdd ? "/param/addBatch" : '/param/updateBatch';
+              let url = self.ifAdd ? "/operatorLimit/addBatch" : '/operatorLimit/updateBatch';
               self.$http.post(self.gatewayUrl + url, {
                 tzdOperator: self.$store.state.tzdOperator,
-                tzdParamList: JSON.stringify([self.form]),
+                tzdOperatorLimitList: JSON.stringify([self.form]),
               }).then((res) => {
                 if (res.data.state === "success") {
                   self.$message.success('操作成功');

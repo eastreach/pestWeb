@@ -38,6 +38,7 @@ export const BaseVueForm = Vue.extend({
   computed: {
     ...mapGetters([
       'tzdOperator',
+      'gatewayUrl',
     ]),
   },
   watch: {

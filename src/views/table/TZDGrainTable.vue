@@ -2,11 +2,11 @@
   <div>
     <el-dialog v-dialogDrag :visible.sync="dialogFormVisible">
       <div class="dialog-title"></div>
-      <t-z-d-param-form
+      <t-z-d-grain-form
         v-bind:form="row"
         v-bind:ifAdd="ifAdd"
         @close="dialogFormVisible=false">
-      </t-z-d-param-form>
+      </t-z-d-grain-form>
     </el-dialog>
     <div>
       <el-row>
@@ -130,18 +130,18 @@
 
 
   import {BaseVueTable} from '../../extend/BaseVueTable'
-  import TZDParamForm from '../form/TZDParamForm.vue';
+  import TZDGrainForm from '../form/TZDGrainForm.vue';
   export default {
     extends: BaseVueTable,
     components: {
-      TZDParamForm,
+      TZDGrainForm,
     },
     methods: {
       //api
       selectPage() {
         let self = this;
         self.loading = true;
-        self.$http.post(self.gatewayUrl + '/param/selectPage', {
+        self.$http.post(self.gatewayUrl + '/grain/selectPage', {
           tzdOperator: self.$store.state.tzdOperator,
           pageSize: self.pageSize,
           currentPage: self.currentPage,
@@ -167,9 +167,9 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          self.$http.post(self.gatewayUrl + '/param/updateBatch', {
+          self.$http.post(self.gatewayUrl + '/grain/updateBatch', {
             tzdOperator: self.$store.state.tzdOperator,
-            tzdParamList: JSON.stringify(self.multipleSelection),
+            tzdGrainList: JSON.stringify(self.multipleSelection),
           }).then((res) => {
             if (res.data.state === "success") {
               self.$message.success('操作成功');
@@ -189,9 +189,9 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          self.$http.post(self.gatewayUrl + '/param/deleteBatch', {
+          self.$http.post(self.gatewayUrl + '/grain/deleteBatch', {
             tzdOperator: self.$store.state.tzdOperator,
-            tzdParamList: JSON.stringify(self.multipleSelection),
+            tzdGrainList: JSON.stringify(self.multipleSelection),
           }).then((res) => {
             if (res.data.state === "success") {
               self.$message.success('操作成功');

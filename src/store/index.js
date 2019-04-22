@@ -18,8 +18,8 @@ const store = new Vuex.Store({
     user
   },
   state: {
-    // gatewayUrl: "http://113.31.21.52:9002/api/gateway.do",
-    gatewayUrl: "http://127.0.0.1:8080",
+    gatewayUrl: "http://113.31.21.52",
+    // gatewayUrl: "http://127.0.0.1:8080",
     tzdOperator: {
       account: "",
       password: "",

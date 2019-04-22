@@ -46,7 +46,7 @@ export const BaseVueTable = {
     },
     ifSelectRows(){
       return this.multipleSelection.length > 0;
-    }
+    },
   },
   watch: {},
   methods: {

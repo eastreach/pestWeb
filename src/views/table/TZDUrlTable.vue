@@ -2,11 +2,11 @@
   <div>
     <el-dialog v-dialogDrag :visible.sync="dialogFormVisible">
       <div class="dialog-title"></div>
-      <t-z-d-param-form
+      <t-z-d-url-form
         v-bind:form="row"
         v-bind:ifAdd="ifAdd"
         @close="dialogFormVisible=false">
-      </t-z-d-param-form>
+      </t-z-d-url-form>
     </el-dialog>
     <div>
       <el-row>
@@ -73,15 +73,9 @@
         </el-table-column>
         <el-table-column
           sortable
-          prop="code"
+          prop="url"
           label="代码"
           width="300">
-        </el-table-column>
-        <el-table-column
-          sortable
-          prop="value"
-          width="200"
-          label="值">
         </el-table-column>
         <el-table-column
           sortable
@@ -130,18 +124,18 @@
 
 
   import {BaseVueTable} from '../../extend/BaseVueTable'
-  import TZDParamForm from '../form/TZDParamForm.vue';
+  import TZDUrlForm from '../form/TZDUrlForm.vue';
   export default {
     extends: BaseVueTable,
     components: {
-      TZDParamForm,
+      TZDUrlForm,
     },
     methods: {
       //api
       selectPage() {
         let self = this;
         self.loading = true;
-        self.$http.post(self.gatewayUrl + '/param/selectPage', {
+        self.$http.post(self.gatewayUrl + '/url/selectPage', {
           tzdOperator: self.$store.state.tzdOperator,
           pageSize: self.pageSize,
           currentPage: self.currentPage,
@@ -167,9 +161,9 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          self.$http.post(self.gatewayUrl + '/param/updateBatch', {
+          self.$http.post(self.gatewayUrl + '/url/updateBatch', {
             tzdOperator: self.$store.state.tzdOperator,
-            tzdParamList: JSON.stringify(self.multipleSelection),
+            tzdUrlList: JSON.stringify(self.multipleSelection),
           }).then((res) => {
             if (res.data.state === "success") {
               self.$message.success('操作成功');
@@ -189,9 +183,9 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          self.$http.post(self.gatewayUrl + '/param/deleteBatch', {
+          self.$http.post(self.gatewayUrl + '/url/deleteBatch', {
             tzdOperator: self.$store.state.tzdOperator,
-            tzdParamList: JSON.stringify(self.multipleSelection),
+            tzdUrlList: JSON.stringify(self.multipleSelection),
           }).then((res) => {
             if (res.data.state === "success") {
               self.$message.success('操作成功');
@@ -204,6 +198,7 @@
         });
       },
 
+
       //table
       handleEdit(row) {
         let self = this;
@@ -211,13 +206,13 @@
         self.ifAdd = false;
         this.dialogFormVisible = true;
       },
+
       handleAdd() {
         let self = this;
         self.row = {};
         self.ifAdd = true;
         self.dialogFormVisible = true;
       },
-
     },
     computed: {},
     data: function () {

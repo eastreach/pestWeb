@@ -17,9 +17,7 @@ export const BaseVue = Vue.extend({
   computed: {
     ...mapGetters([
       'tzdOperator',
-      'if_hotelId_root',
-      'if_code_root',
-      'if_group',
+      'gatewayUrl',
     ]),
   },
   watch: {},

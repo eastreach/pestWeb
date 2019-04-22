@@ -14,5 +14,6 @@ const getters = {
   addRouters: state => state.permission.addRouters,
   errorLogs: state => state.errorLog.logs,
   tzdOperator: state => state.tzdOperator,
+  gatewayUrl: state => state.gatewayUrl,
 }
 export default getters

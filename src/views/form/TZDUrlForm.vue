@@ -5,13 +5,8 @@
     <el-form :model="form" ref="form" :rules="formRules">
       <el-row>
         <el-col :span="12">
-          <el-form-item label="代码" :label-width="formLabelWidth" prop="code">
-            <el-input v-model="form.code" auto-complete="off" :disabled="!ifAdd"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="值" :label-width="formLabelWidth" prop="value">
-            <el-input v-model="form.value" auto-complete="off"></el-input>
+          <el-form-item label="代码" :label-width="formLabelWidth" prop="url">
+            <el-input v-model="form.url" auto-complete="off" :disabled="!ifAdd"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
@@ -23,6 +18,7 @@
         </el-col>
       </el-row>
     </el-form>
+
   </div>
 </template>
 
@@ -31,15 +27,21 @@
   export default {
     extends: BaseVueForm,
     components: {},
-    props: ['form', 'ifAdd'],
+    props: ['form','ifAdd'],
     computed: {},
     data: function () {
       return {
         formLabelWidth: '120px',
         formRules: {
+          hotelId: [
+            {required: true, message: '请填写酒店Id', trigger: 'blur'}
+          ],
           code: [
             {required: true, message: '请填写代码', trigger: 'blur'}
           ],
+          name: [
+            {required: true, message: '请填写名称', trigger: 'blur'}
+          ]
         }
 
       }
@@ -54,10 +56,11 @@
               cancelButtonText: '取消',
               type: 'warning'
             }).then(() => {
-              let url = self.ifAdd ? "/param/addBatch" : '/param/updateBatch';
-              self.$http.post(self.gatewayUrl + url, {
-                tzdOperator: self.$store.state.tzdOperator,
+              self.$http.post(self.$store.state.node.url, {
+                service: "tzdParamService",
+                action: "update",
                 tzdParamList: JSON.stringify([self.form]),
+                tzdOperator: self.$store.state.tzdOperator,
               }).then((res) => {
                 if (res.data.state === "success") {
                   self.$message.success('操作成功');

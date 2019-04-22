@@ -2,11 +2,11 @@
   <div>
     <el-dialog v-dialogDrag :visible.sync="dialogFormVisible">
       <div class="dialog-title"></div>
-      <t-z-d-param-form
+      <t-z-d-operator-limit-form
         v-bind:form="row"
         v-bind:ifAdd="ifAdd"
         @close="dialogFormVisible=false">
-      </t-z-d-param-form>
+      </t-z-d-operator-limit-form>
     </el-dialog>
     <div>
       <el-row>
@@ -130,18 +130,18 @@
 
 
   import {BaseVueTable} from '../../extend/BaseVueTable'
-  import TZDParamForm from '../form/TZDParamForm.vue';
+  import TZDOperatorLimitForm from '../form/TZDOperatorLimitForm.vue';
   export default {
     extends: BaseVueTable,
     components: {
-      TZDParamForm,
+      TZDOperatorLimitForm,
     },
     methods: {
       //api
       selectPage() {
         let self = this;
         self.loading = true;
-        self.$http.post(self.gatewayUrl + '/param/selectPage', {
+        self.$http.post(self.gatewayUrl + '/operatorLimit/selectPage', {
           tzdOperator: self.$store.state.tzdOperator,
           pageSize: self.pageSize,
           currentPage: self.currentPage,
@@ -167,9 +167,9 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          self.$http.post(self.gatewayUrl + '/param/updateBatch', {
+          self.$http.post(self.gatewayUrl + '/operatorLimit/updateBatch', {
             tzdOperator: self.$store.state.tzdOperator,
-            tzdParamList: JSON.stringify(self.multipleSelection),
+            tzdOperatorLimitList: JSON.stringify(self.multipleSelection),
           }).then((res) => {
             if (res.data.state === "success") {
               self.$message.success('操作成功');
@@ -189,9 +189,9 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          self.$http.post(self.gatewayUrl + '/param/deleteBatch', {
+          self.$http.post(self.gatewayUrl + '/operatorLimit/deleteBatch', {
             tzdOperator: self.$store.state.tzdOperator,
-            tzdParamList: JSON.stringify(self.multipleSelection),
+            tzdOperatorLimitList: JSON.stringify(self.multipleSelection),
           }).then((res) => {
             if (res.data.state === "success") {
               self.$message.success('操作成功');
