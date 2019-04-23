@@ -194,6 +194,7 @@
             tzdLogList: JSON.stringify(self.multipleSelection),
           }).then((res) => {
             if (res.data.state === "success") {
+              self.selectPage();
               self.$message.success('操作成功');
             } else {
               self.$message.success('操作失败:' + res.data.msg);

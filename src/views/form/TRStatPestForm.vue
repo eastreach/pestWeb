@@ -10,8 +10,8 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="名称" :label-width="formLabelWidth" prop="name">
-            <el-input v-model="form.name" auto-complete="off"></el-input>
+          <el-form-item label="值" :label-width="formLabelWidth" prop="value">
+            <el-input v-model="form.value" auto-complete="off"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
@@ -19,17 +19,6 @@
         <el-col :span="24">
           <el-form-item label="备注" :label-width="formLabelWidth">
             <el-input v-model="form.memo" auto-complete="off"></el-input>
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <el-row>
-        <el-col :span="24">
-          <el-form-item label="图片" :label-width="formLabelWidth">
-            <el-input v-model="form.pic" auto-complete="off"></el-input>
-            <image-upload
-              imageField="pic"
-              v-bind:form="form">
-            </image-upload>
           </el-form-item>
         </el-col>
       </el-row>
@@ -65,10 +54,10 @@
               cancelButtonText: '取消',
               type: 'warning'
             }).then(() => {
-              let url = self.ifAdd ? "/pest/addBatch" : '/pest/updateBatch';
+              let url = self.ifAdd ? "/statPest/addBatch" : '/statPest/updateBatch';
               self.$http.post(self.gatewayUrl + url, {
                 tzdOperator: self.$store.state.tzdOperator,
-                tzdPestList: JSON.stringify([self.form]),
+                trStatPestList: JSON.stringify([self.form]),
               }).then((res) => {
                 if (res.data.state === "success") {
                   self.$message.success('操作成功');

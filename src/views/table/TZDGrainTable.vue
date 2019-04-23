@@ -73,15 +73,21 @@
         </el-table-column>
         <el-table-column
           sortable
-          prop="code"
-          label="代码"
-          width="300">
+          prop="state"
+          width="80"
+          label="状态">
         </el-table-column>
         <el-table-column
           sortable
-          prop="value"
+          prop="code"
+          label="代码"
+          width="100">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="name"
           width="200"
-          label="值">
+          label="名称">
         </el-table-column>
         <el-table-column
           sortable
@@ -194,6 +200,7 @@
             tzdGrainList: JSON.stringify(self.multipleSelection),
           }).then((res) => {
             if (res.data.state === "success") {
+              self.selectPage();
               self.$message.success('操作成功');
             } else {
               self.$message.success('操作失败:' + res.data.msg);

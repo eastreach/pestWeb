@@ -2,11 +2,11 @@
   <div>
     <el-dialog v-dialogDrag :visible.sync="dialogFormVisible">
       <div class="dialog-title"></div>
-      <t-z-d-operator-limit-form
+      <t-r-stat-pest-form
         v-bind:form="row"
         v-bind:ifAdd="ifAdd"
         @close="dialogFormVisible=false">
-      </t-z-d-operator-limit-form>
+      </t-r-stat-pest-form>
     </el-dialog>
     <div>
       <el-row>
@@ -130,18 +130,18 @@
 
 
   import {BaseVueTable} from '../../extend/BaseVueTable'
-  import TZDOperatorLimitForm from '../form/TZDOperatorLimitForm.vue';
+  import TRStatPestForm from '../form/TRStatPestForm.vue';
   export default {
     extends: BaseVueTable,
     components: {
-      TZDOperatorLimitForm,
+      TRStatPestForm,
     },
     methods: {
       //api
       selectPage() {
         let self = this;
         self.loading = true;
-        self.$http.post(self.gatewayUrl + '/operatorLimit/selectPage', {
+        self.$http.post(self.gatewayUrl + '/statPest/selectPage', {
           tzdOperator: self.$store.state.tzdOperator,
           pageSize: self.pageSize,
           currentPage: self.currentPage,
@@ -167,9 +167,9 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          self.$http.post(self.gatewayUrl + '/operatorLimit/updateBatch', {
+          self.$http.post(self.gatewayUrl + '/statPest/updateBatch', {
             tzdOperator: self.$store.state.tzdOperator,
-            tzdOperatorLimitList: JSON.stringify(self.multipleSelection),
+            trStatPestList: JSON.stringify(self.multipleSelection),
           }).then((res) => {
             if (res.data.state === "success") {
               self.$message.success('操作成功');
@@ -189,9 +189,9 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          self.$http.post(self.gatewayUrl + '/operatorLimit/deleteBatch', {
+          self.$http.post(self.gatewayUrl + '/statPest/deleteBatch', {
             tzdOperator: self.$store.state.tzdOperator,
-            tzdOperatorLimitList: JSON.stringify(self.multipleSelection),
+            trStatPestList: JSON.stringify(self.multipleSelection),
           }).then((res) => {
             if (res.data.state === "success") {
               self.selectPage();

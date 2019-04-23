@@ -73,9 +73,27 @@
         </el-table-column>
         <el-table-column
           sortable
+          prop="state"
+          width="80"
+          label="状态">
+        </el-table-column>
+        <el-table-column
+          sortable
           prop="url"
           label="代码"
           width="300">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="limitType"
+          width="80"
+          label="权限模式">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="logLevel"
+          width="80"
+          label="日志模式">
         </el-table-column>
         <el-table-column
           sortable
@@ -188,6 +206,7 @@
             tzdUrlList: JSON.stringify(self.multipleSelection),
           }).then((res) => {
             if (res.data.state === "success") {
+              self.selectPage();
               self.$message.success('操作成功');
             } else {
               self.$message.success('操作失败:' + res.data.msg);

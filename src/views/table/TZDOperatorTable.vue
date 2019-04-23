@@ -73,15 +73,45 @@
         </el-table-column>
         <el-table-column
           sortable
-          prop="code"
-          label="代码"
-          width="300">
+          prop="state"
+          width="80"
+          label="状态">
         </el-table-column>
         <el-table-column
           sortable
-          prop="value"
-          width="200"
-          label="值">
+          prop="account"
+          label="账号"
+          width="100">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="password"
+          width="100"
+          label="密码">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="name"
+          width="100"
+          label="姓名">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="telephone"
+          width="100"
+          label="电话">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="areaCode"
+          width="100"
+          label="区域代码">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="role"
+          width="100"
+          label="角色">
         </el-table-column>
         <el-table-column
           sortable
@@ -194,6 +224,7 @@
             tzdOperatorList: JSON.stringify(self.multipleSelection),
           }).then((res) => {
             if (res.data.state === "success") {
+              self.selectPage();
               self.$message.success('操作成功');
             } else {
               self.$message.success('操作失败:' + res.data.msg);

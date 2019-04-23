@@ -2,11 +2,11 @@
   <div>
     <el-dialog v-dialogDrag :visible.sync="dialogFormVisible">
       <div class="dialog-title"></div>
-      <t-z-d-operator-limit-form
+      <t-r-grain-pest-form
         v-bind:form="row"
         v-bind:ifAdd="ifAdd"
         @close="dialogFormVisible=false">
-      </t-z-d-operator-limit-form>
+      </t-r-grain-pest-form>
     </el-dialog>
     <div>
       <el-row>
@@ -73,15 +73,33 @@
         </el-table-column>
         <el-table-column
           sortable
-          prop="code"
-          label="代码"
-          width="300">
+          prop="state"
+          width="80"
+          label="状态">
         </el-table-column>
         <el-table-column
           sortable
-          prop="value"
-          width="200"
-          label="值">
+          prop="grainCode"
+          label="作物代码"
+          width="100">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="grainName"
+          width="100"
+          label="作物名称">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="pestCode"
+          label="害虫代码"
+          width="100">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="pestName"
+          width="100"
+          label="害虫名称">
         </el-table-column>
         <el-table-column
           sortable
@@ -130,18 +148,18 @@
 
 
   import {BaseVueTable} from '../../extend/BaseVueTable'
-  import TZDOperatorLimitForm from '../form/TZDOperatorLimitForm.vue';
+  import TRGrainPestForm from '../form/TRGrainPestForm.vue';
   export default {
     extends: BaseVueTable,
     components: {
-      TZDOperatorLimitForm,
+      TRGrainPestForm,
     },
     methods: {
       //api
       selectPage() {
         let self = this;
         self.loading = true;
-        self.$http.post(self.gatewayUrl + '/operatorLimit/selectPage', {
+        self.$http.post(self.gatewayUrl + '/grainPest/selectPage', {
           tzdOperator: self.$store.state.tzdOperator,
           pageSize: self.pageSize,
           currentPage: self.currentPage,
@@ -167,9 +185,9 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          self.$http.post(self.gatewayUrl + '/operatorLimit/updateBatch', {
+          self.$http.post(self.gatewayUrl + '/grainPest/updateBatch', {
             tzdOperator: self.$store.state.tzdOperator,
-            tzdOperatorLimitList: JSON.stringify(self.multipleSelection),
+            trGrainPestList: JSON.stringify(self.multipleSelection),
           }).then((res) => {
             if (res.data.state === "success") {
               self.$message.success('操作成功');
@@ -189,9 +207,9 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          self.$http.post(self.gatewayUrl + '/operatorLimit/deleteBatch', {
+          self.$http.post(self.gatewayUrl + '/grainPest/deleteBatch', {
             tzdOperator: self.$store.state.tzdOperator,
-            tzdOperatorLimitList: JSON.stringify(self.multipleSelection),
+            trGrainPestList: JSON.stringify(self.multipleSelection),
           }).then((res) => {
             if (res.data.state === "success") {
               self.selectPage();

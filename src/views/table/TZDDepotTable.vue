@@ -73,15 +73,69 @@
         </el-table-column>
         <el-table-column
           sortable
-          prop="code"
-          label="代码"
-          width="300">
+          prop="state"
+          width="80"
+          label="状态">
         </el-table-column>
         <el-table-column
           sortable
-          prop="value"
+          prop="code"
+          label="代码"
+          width="100">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="name"
           width="200"
-          label="值">
+          label="名称">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="kind"
+          width="200"
+          label="类型">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="volumeName"
+          width="200"
+          label="容量">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="grainName"
+          width="200"
+          label="主要作物">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="storeKind"
+          width="200"
+          label="存储形式">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="mountValue"
+          width="200"
+          label="当前储量">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="grainArea"
+          width="200"
+          label="粮食产地">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="inDt"
+          width="200"
+          label="入库时间">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="outDt"
+          width="200"
+          label="出库时间">
         </el-table-column>
         <el-table-column
           sortable
@@ -194,6 +248,7 @@
             tzdDepotList: JSON.stringify(self.multipleSelection),
           }).then((res) => {
             if (res.data.state === "success") {
+              self.selectPage();
               self.$message.success('操作成功');
             } else {
               self.$message.success('操作失败:' + res.data.msg);

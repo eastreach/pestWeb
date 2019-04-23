@@ -73,15 +73,51 @@
         </el-table-column>
         <el-table-column
           sortable
-          prop="code"
-          label="代码"
-          width="300">
+          prop="state"
+          width="80"
+          label="状态">
         </el-table-column>
         <el-table-column
           sortable
-          prop="value"
+          prop="code"
+          label="代码"
+          width="100">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="name"
+          width="120"
+          label="名称">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="danger"
+          width="80"
+          label="危险">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="family"
+          width="90"
+          label="科属">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="category"
+          width="90"
+          label="类别">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="feature"
           width="200"
-          label="值">
+          label="特征">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="damage"
+          width="200"
+          label="危害">
         </el-table-column>
         <el-table-column
           sortable
@@ -194,6 +230,7 @@
             tzdPestList: JSON.stringify(self.multipleSelection),
           }).then((res) => {
             if (res.data.state === "success") {
+              self.selectPage();
               self.$message.success('操作成功');
             } else {
               self.$message.success('操作失败:' + res.data.msg);

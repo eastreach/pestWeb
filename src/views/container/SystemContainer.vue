@@ -19,6 +19,18 @@
           </t-z-d-log-table>
         </keep-alive>
       </el-tab-pane>
+      <el-tab-pane label="操作员" name="TZDOperatorTable">
+        <keep-alive>
+          <t-z-d-operator-table v-if="activeName=='TZDOperatorTable'">
+          </t-z-d-operator-table>
+        </keep-alive>
+      </el-tab-pane>
+      <el-tab-pane label="操作员权限" name="TZDOperatorLimitTable">
+        <keep-alive>
+          <t-z-d-operator-limit-table v-if="activeName=='TZDOperatorLimitTable'">
+          </t-z-d-operator-limit-table>
+        </keep-alive>
+      </el-tab-pane>
       <el-tab-pane label="区域" name="TZDAreaTable">
         <keep-alive>
           <t-z-d-area-table v-if="activeName=='TZDAreaTable'">
@@ -43,16 +55,16 @@
           </t-z-d-pest-table>
         </keep-alive>
       </el-tab-pane>
-      <el-tab-pane label="操作员" name="TZDOperatorTable">
+      <el-tab-pane label="作物区域关系" name="TRGrainAreaTable">
         <keep-alive>
-          <t-z-d-operator-table v-if="activeName=='TZDOperatorTable'">
-          </t-z-d-operator-table>
+          <t-r-grain-area-table v-if="activeName=='TRGrainAreaTable'">
+          </t-r-grain-area-table>
         </keep-alive>
       </el-tab-pane>
-      <el-tab-pane label="操作员权限" name="TZDOperatorLimitTable">
+      <el-tab-pane label="作物害虫关系" name="TRGrainPestTable">
         <keep-alive>
-          <t-z-d-operator-limit-table v-if="activeName=='TZDOperatorLimitTable'">
-          </t-z-d-operator-limit-table>
+          <t-r-grain-pest-table v-if="activeName=='TRGrainPestTable'">
+          </t-r-grain-pest-table>
         </keep-alive>
       </el-tab-pane>
     </el-tabs>
@@ -71,6 +83,8 @@
   import TZDPestTable from '../table/TZDPestTable.vue'
   import TZDOperatorTable from '../table/TZDOperatorTable.vue'
   import TZDOperatorLimitTable from '../table/TZDOperatorLimitTable.vue'
+  import TRGrainAreaTable from '../table/TRGrainAreaTable.vue'
+  import TRGrainPestTable from '../table/TRGrainPestTable.vue'
   export default {
     name: 'HelpContainer',
     extends: BaseVue,
@@ -84,6 +98,8 @@
       TZDPestTable,
       TZDOperatorTable,
       TZDOperatorLimitTable,
+      TRGrainAreaTable,
+      TRGrainPestTable,
     },
     methods: {},
     computed: {},

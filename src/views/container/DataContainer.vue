@@ -1,15 +1,28 @@
 <template>
   <div>
     <el-tabs v-model="activeName">
-      <el-tab-pane label="关于我们" name="About">
+      <el-tab-pane label="信息发布" name="TPublishInfoTable">
         <keep-alive>
-          <about v-if="activeName=='About'"></about>
+          <t-publish-info-table v-if="activeName=='TPublishInfoTable'">
+          </t-publish-info-table>
         </keep-alive>
       </el-tab-pane>
-      <el-tab-pane label="系统参数" name="TZDParamTable">
+      <el-tab-pane label="问题反馈" name="TQuestionTable">
         <keep-alive>
-          <t-z-d-param-table v-if="activeName=='TZDParamTable'">
-          </t-z-d-param-table>
+          <t-question-table v-if="activeName=='TQuestionTable'">
+          </t-question-table>
+        </keep-alive>
+      </el-tab-pane>
+      <el-tab-pane label="害虫统计" name="TRStatPestTable">
+        <keep-alive>
+          <t-r-stat-pest-table v-if="activeName=='TRStatPestTable'">
+          </t-r-stat-pest-table>
+        </keep-alive>
+      </el-tab-pane>
+      <el-tab-pane label="作物统计" name="TRStatGrainTable">
+        <keep-alive>
+          <t-r-stat-grain-table v-if="activeName=='TRStatGrainTable'">
+          </t-r-stat-grain-table>
         </keep-alive>
       </el-tab-pane>
     </el-tabs>
@@ -19,20 +32,24 @@
 
 <script>
   import {BaseVue} from '../../extend/BaseVue'
-  import About from '../About.vue'
-  import TZDParamTable from '../table/TZDParamTable.vue'
+  import TPublishInfoTable from '../table/TPublishInfoTable.vue'
+  import TQuestionTable from '../table/TQuestionTable.vue'
+  import TRStatPestTable from '../table/TRStatPestTable.vue'
+  import TRStatGrainTable from '../table/TRStatGrainTable.vue'
   export default {
-    name: 'HelpContainer',
+    name: 'DataContainer',
     extends: BaseVue,
     components: {
-      About,
-      TZDParamTable,
+      TPublishInfoTable,
+      TQuestionTable,
+      TRStatPestTable,
+      TRStatGrainTable,
     },
     methods: {},
     computed: {},
     data() {
       return {
-        activeName: 'About',
+        activeName: 'TPublishInfoTable',
       };
     },
     mounted(){
