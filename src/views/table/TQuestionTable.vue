@@ -73,15 +73,51 @@
         </el-table-column>
         <el-table-column
           sortable
-          prop="code"
-          label="代码"
-          width="300">
+          prop="state"
+          width="80"
+          label="状态">
         </el-table-column>
         <el-table-column
           sortable
-          prop="value"
-          width="200"
-          label="值">
+          prop="code"
+          label="代码"
+          width="100">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="name"
+          width="100"
+          label="名称">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="createDt"
+          width="100"
+          label="创建时间">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="createOper"
+          width="100"
+          label="创建人">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="role"
+          width="100"
+          label="角色">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="areaCode"
+          width="100"
+          label="区域">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="content"
+          width="100"
+          label="内容">
         </el-table-column>
         <el-table-column
           sortable

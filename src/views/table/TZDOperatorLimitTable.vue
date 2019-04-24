@@ -24,6 +24,8 @@
       <el-button type="primary" @click="this.handleAdd">新增</el-button>
       <el-button type="primary" @click="this.update" :disabled="!ifSelectRows">保存</el-button>
       <el-button type="primary" @click="this.delete" :disabled="!ifSelectRows">删除</el-button>
+      <el-button type="primary" @click="this.open" :disabled="!ifSelectRows">开通</el-button>
+      <el-button type="primary" @click="this.close" :disabled="!ifSelectRows">关闭</el-button>
     </div>
 
     <div class="pagination">
@@ -73,15 +75,33 @@
         </el-table-column>
         <el-table-column
           sortable
-          prop="code"
-          label="代码"
+          prop="state"
+          width="80"
+          label="状态">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="account"
+          label="账号"
+          width="100">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="url"
+          label="权限"
           width="300">
         </el-table-column>
         <el-table-column
           sortable
-          prop="value"
-          width="200"
-          label="值">
+          prop="ifLimit"
+          width="100"
+          label="权限状态">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="limitLevel"
+          width="100"
+          label="权限等级">
         </el-table-column>
         <el-table-column
           sortable
@@ -190,6 +210,50 @@
           type: 'warning'
         }).then(() => {
           self.$http.post(self.gatewayUrl + '/operatorLimit/deleteBatch', {
+            tzdOperator: self.$store.state.tzdOperator,
+            tzdOperatorLimitList: JSON.stringify(self.multipleSelection),
+          }).then((res) => {
+            if (res.data.state === "success") {
+              self.selectPage();
+              self.$message.success('操作成功');
+            } else {
+              self.$message.success('操作失败:' + res.data.msg);
+            }
+          });
+        }).catch((e) => {
+          self.$message.success('操作失败:' + e);
+        });
+      },
+      open(){
+        let self = this;
+        self.$confirm('是否继续操作', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          self.$http.post(self.gatewayUrl + '/operatorLimit/open', {
+            tzdOperator: self.$store.state.tzdOperator,
+            tzdOperatorLimitList: JSON.stringify(self.multipleSelection),
+          }).then((res) => {
+            if (res.data.state === "success") {
+              self.selectPage();
+              self.$message.success('操作成功');
+            } else {
+              self.$message.success('操作失败:' + res.data.msg);
+            }
+          });
+        }).catch((e) => {
+          self.$message.success('操作失败:' + e);
+        });
+      },
+      close(){
+        let self = this;
+        self.$confirm('是否继续操作', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          self.$http.post(self.gatewayUrl + '/operatorLimit/close', {
             tzdOperator: self.$store.state.tzdOperator,
             tzdOperatorLimitList: JSON.stringify(self.multipleSelection),
           }).then((res) => {

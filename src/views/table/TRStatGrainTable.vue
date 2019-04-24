@@ -73,15 +73,69 @@
         </el-table-column>
         <el-table-column
           sortable
-          prop="code"
-          label="代码"
-          width="300">
+          prop="state"
+          width="80"
+          label="状态">
         </el-table-column>
         <el-table-column
           sortable
-          prop="value"
-          width="200"
-          label="值">
+          prop="code"
+          label="代码"
+          width="100">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="name"
+          width="100"
+          label="名称">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="createDt"
+          width="100"
+          label="创建时间">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="createOper"
+          width="100"
+          label="创建人">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="year"
+          width="100"
+          label="year">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="month"
+          width="100"
+          label="month">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="areaCode"
+          width="100"
+          label="areaCode">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="grainCode"
+          width="100"
+          label="grainCode">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="pestCode"
+          width="100"
+          label="pestCode">
+        </el-table-column>
+        <el-table-column
+          sortable
+          prop="grainValue"
+          width="100"
+          label="grainValue">
         </el-table-column>
         <el-table-column
           sortable

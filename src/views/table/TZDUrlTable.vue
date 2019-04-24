@@ -24,6 +24,8 @@
       <el-button type="primary" @click="this.handleAdd">新增</el-button>
       <el-button type="primary" @click="this.update" :disabled="!ifSelectRows">保存</el-button>
       <el-button type="primary" @click="this.delete" :disabled="!ifSelectRows">删除</el-button>
+      <el-button type="primary" @click="this.limitType0" :disabled="!ifSelectRows">默认授权</el-button>
+      <el-button type="primary" @click="this.limitType1" :disabled="!ifSelectRows">默认限权</el-button>
     </div>
 
     <div class="pagination">
@@ -216,7 +218,50 @@
           self.$message.success('操作失败:' + e);
         });
       },
-
+      limitType0(){
+        let self = this;
+        self.$confirm('是否继续操作', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          self.$http.post(self.gatewayUrl + '/url/limitType0', {
+            tzdOperator: self.$store.state.tzdOperator,
+            tzdUrlList: JSON.stringify(self.multipleSelection),
+          }).then((res) => {
+            if (res.data.state === "success") {
+              self.selectPage();
+              self.$message.success('操作成功');
+            } else {
+              self.$message.success('操作失败:' + res.data.msg);
+            }
+          });
+        }).catch((e) => {
+          self.$message.success('操作失败:' + e);
+        });
+      },
+      limitType1(){
+        let self = this;
+        self.$confirm('是否继续操作', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          self.$http.post(self.gatewayUrl + '/url/limitType1', {
+            tzdOperator: self.$store.state.tzdOperator,
+            tzdUrlList: JSON.stringify(self.multipleSelection),
+          }).then((res) => {
+            if (res.data.state === "success") {
+              self.selectPage();
+              self.$message.success('操作成功');
+            } else {
+              self.$message.success('操作失败:' + res.data.msg);
+            }
+          });
+        }).catch((e) => {
+          self.$message.success('操作失败:' + e);
+        });
+      },
 
       //table
       handleEdit(row) {

@@ -22,6 +22,7 @@
     <div>
       <el-button type="primary" @click="this.selectPage">搜索</el-button>
       <el-button type="primary" @click="this.handleAdd">新增</el-button>
+      <el-button type="primary" @click="this.initLimit">初始化权限</el-button>
       <el-button type="primary" @click="this.update" :disabled="!ifSelectRows">保存</el-button>
       <el-button type="primary" @click="this.delete" :disabled="!ifSelectRows">删除</el-button>
     </div>
@@ -220,6 +221,28 @@
           type: 'warning'
         }).then(() => {
           self.$http.post(self.gatewayUrl + '/operator/deleteBatch', {
+            tzdOperator: self.$store.state.tzdOperator,
+            tzdOperatorList: JSON.stringify(self.multipleSelection),
+          }).then((res) => {
+            if (res.data.state === "success") {
+              self.selectPage();
+              self.$message.success('操作成功');
+            } else {
+              self.$message.success('操作失败:' + res.data.msg);
+            }
+          });
+        }).catch((e) => {
+          self.$message.success('操作失败:' + e);
+        });
+      },
+      initLimit(){
+        let self = this;
+        self.$confirm('是否继续操作', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          self.$http.post(self.gatewayUrl + '/operator/initLimit', {
             tzdOperator: self.$store.state.tzdOperator,
             tzdOperatorList: JSON.stringify(self.multipleSelection),
           }).then((res) => {
