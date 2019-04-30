@@ -5,13 +5,28 @@
     <el-form :model="form" ref="form" :rules="formRules">
       <el-row>
         <el-col :span="12">
-          <el-form-item label="代码" :label-width="formLabelWidth" prop="code">
-            <el-input v-model="form.code" auto-complete="off" :disabled="!ifAdd"></el-input>
+          <el-form-item label="account" :label-width="formLabelWidth" prop="account">
+            <el-input v-model="form.account" auto-complete="off" :disabled="!ifAdd"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="值" :label-width="formLabelWidth" prop="value">
-            <el-input v-model="form.value" auto-complete="off"></el-input>
+          <el-form-item label="url" :label-width="formLabelWidth" prop="url">
+            <el-input v-model="form.url" auto-complete="off" :disabled="!ifAdd"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="url" :label-width="formLabelWidth" prop="url">
+            <el-input v-model="form.url" auto-complete="off" :disabled="!ifAdd"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="ifLimit" :label-width="formLabelWidth" prop="ifLimit">
+            <el-input v-model="form.ifLimit" auto-complete="off"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="limitLevel" :label-width="formLabelWidth" prop="limitLevel">
+            <el-input v-model="form.limitLevel" auto-complete="off"></el-input>
           </el-form-item>
         </el-col>
       </el-row>

@@ -1,13 +1,13 @@
 <template>
   <div>
     <el-tabs v-model="activeName">
-      <el-tab-pane label="信息发布" name="TPublishInfoTable">
+      <el-tab-pane label="反馈统计" name="TPublishInfoTable">
         <keep-alive>
           <t-publish-info-table v-if="activeName=='TPublishInfoTable'">
           </t-publish-info-table>
         </keep-alive>
       </el-tab-pane>
-      <el-tab-pane label="问题反馈" name="TQuestionTable">
+      <el-tab-pane label="问题统计" name="TQuestionTable">
         <keep-alive>
           <t-question-table v-if="activeName=='TQuestionTable'">
           </t-question-table>

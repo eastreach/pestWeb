@@ -5,17 +5,62 @@
     <el-form :model="form" ref="form" :rules="formRules">
       <el-row>
         <el-col :span="12">
-          <el-form-item label="代码" :label-width="formLabelWidth" prop="code">
-            <el-input v-model="form.code" auto-complete="off" :disabled="!ifAdd"></el-input>
+          <el-form-item label="账号" :label-width="formLabelWidth" prop="account">
+            <el-input v-model="form.account" auto-complete="off" :disabled="!ifAdd"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="值" :label-width="formLabelWidth" prop="value">
-            <el-input v-model="form.value" auto-complete="off"></el-input>
+          <el-form-item label="密码" :label-width="formLabelWidth" prop="password">
+            <el-input v-model="form.password" auto-complete="off"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
+        <el-col :span="12">
+          <el-form-item label="state" :label-width="formLabelWidth" prop="state">
+            <el-input v-model="form.state" auto-complete="off"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="role" :label-width="formLabelWidth" prop="role">
+            <el-input v-model="form.role" auto-complete="off"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="roleName" :label-width="formLabelWidth" prop="roleName">
+            <el-input v-model="form.roleName" auto-complete="off"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="name" :label-width="formLabelWidth" prop="name">
+            <el-input v-model="form.name" auto-complete="off"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="telephone" :label-width="formLabelWidth" prop="telephone">
+            <el-input v-model="form.telephone" auto-complete="off"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="place" :label-width="formLabelWidth" prop="place">
+            <el-input v-model="form.place" auto-complete="off"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="province" :label-width="formLabelWidth" prop="province">
+            <el-input v-model="form.province" auto-complete="off"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="city" :label-width="formLabelWidth" prop="city">
+            <el-input v-model="form.city" auto-complete="off"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="areaCode" :label-width="formLabelWidth" prop="areaCode">
+            <el-input v-model="form.areaCode" auto-complete="off"></el-input>
+          </el-form-item>
+        </el-col>
         <el-col :span="24">
           <el-form-item label="备注" :label-width="formLabelWidth">
             <el-input v-model="form.memo" auto-complete="off"></el-input>

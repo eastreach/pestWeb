@@ -5,13 +5,33 @@
     <el-form :model="form" ref="form" :rules="formRules">
       <el-row>
         <el-col :span="12">
-          <el-form-item label="代码" :label-width="formLabelWidth" prop="code">
-            <el-input v-model="form.code" auto-complete="off" :disabled="!ifAdd"></el-input>
+          <el-form-item label="grainCode" :label-width="formLabelWidth" prop="grainCode">
+            <el-input v-model="form.grainCode" auto-complete="off" :disabled="!ifAdd"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="值" :label-width="formLabelWidth" prop="value">
-            <el-input v-model="form.value" auto-complete="off"></el-input>
+          <el-form-item label="grainName" :label-width="formLabelWidth" prop="grainName">
+            <el-input v-model="form.grainName" auto-complete="off"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="pestCode" :label-width="formLabelWidth" prop="pestCode">
+            <el-input v-model="form.pestCode" auto-complete="off" :disabled="!ifAdd"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="pestName" :label-width="formLabelWidth" prop="pestName">
+            <el-input v-model="form.pestName" auto-complete="off"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="name" :label-width="formLabelWidth" prop="name">
+            <el-input v-model="form.name" auto-complete="off"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="state" :label-width="formLabelWidth" prop="state">
+            <el-input v-model="form.state" auto-complete="off"></el-input>
           </el-form-item>
         </el-col>
       </el-row>

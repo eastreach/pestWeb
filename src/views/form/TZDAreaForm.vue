@@ -10,8 +10,28 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="值" :label-width="formLabelWidth" prop="value">
-            <el-input v-model="form.value" auto-complete="off"></el-input>
+          <el-form-item label="name" :label-width="formLabelWidth" prop="name">
+            <el-input v-model="form.name" auto-complete="off"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="state" :label-width="formLabelWidth" prop="state">
+            <el-input v-model="form.state" auto-complete="off"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="areaDesc" :label-width="formLabelWidth" prop="areaDesc">
+            <el-input v-model="form.areaDesc" auto-complete="off"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="featureDesc" :label-width="formLabelWidth" prop="featureDesc">
+            <el-input v-model="form.featureDesc" auto-complete="off"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item label="grainDesc" :label-width="formLabelWidth" prop="grainDesc">
+            <el-input v-model="form.grainDesc" auto-complete="off"></el-input>
           </el-form-item>
         </el-col>
       </el-row>

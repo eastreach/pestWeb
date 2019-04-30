@@ -91,15 +91,9 @@
         </el-table-column>
         <el-table-column
           sortable
-          prop="createDt"
+          prop="dt"
           width="100"
-          label="创建时间">
-        </el-table-column>
-        <el-table-column
-          sortable
-          prop="createOper"
-          width="100"
-          label="创建人">
+          label="上传时间">
         </el-table-column>
         <el-table-column
           sortable
